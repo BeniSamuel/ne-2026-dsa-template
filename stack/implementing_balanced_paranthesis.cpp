@@ -71,7 +71,7 @@ bool isBalanced(string brack)
 {
 
     stack st;
-    for (int i = 0; i < brack.length(); i++)
+    for (size_t i = 0; i < brack.length(); i++)
     {
         if (brack[i] == '(' || brack[i] == '{' || brack[i] == '[')
         {

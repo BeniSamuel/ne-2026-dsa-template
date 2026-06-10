@@ -14,7 +14,7 @@ int roadMatrix[MAX_CITIES][MAX_CITIES] = {0};
 float budgetMatrix[MAX_CITIES][MAX_CITIES] = {0.0};
 
 int getCityIndex(const string& name) {
-    for (int i = 0; i < cities.size(); i++) {
+    for (size_t i = 0; i < cities.size(); i++) {
         if (cities[i] == name) return i;
     }
     return -1;
@@ -76,7 +76,7 @@ void editCity() {
     int idx;
     cout << "Enter the index of the city to edit: ";
     cin >> idx;
-    if (idx >= 1 && idx <= cities.size()) {
+    if (idx >= 1 && static_cast<size_t>(idx) <= cities.size()) {
         string newName;
         cout << "Enter new name for city: ";
         cin >> ws; getline(cin, newName);
@@ -91,7 +91,7 @@ void searchCity() {
     int idx;
     cout << "Enter the index of the city: ";
     cin >> idx;
-    if (idx >= 1 && idx <= cities.size()) {
+    if (idx >= 1 && static_cast<size_t>(idx) <= cities.size()) {
         cout << "City " << idx << ": " << cities[idx - 1] << endl;
     } else {
         cout << "City not found.\n";
@@ -99,20 +99,20 @@ void searchCity() {
 }
 
 void displayCities() {
-    for (int i = 0; i < cities.size(); i++) {
+    for (size_t i = 0; i < cities.size(); i++) {
         cout << (i + 1) << ": " << cities[i] << endl;
     }
 }
 
 void displayRoads() {
     cout << "Cities:\n";
-    for (int i = 0; i < cities.size(); i++) {
+    for (size_t i = 0; i < cities.size(); i++) {
         cout << (i + 1) << ": " << cities[i] << endl;
     }
 
     cout << "Roads Adjacency Matrix:\n";
-    for (int i = 0; i < cities.size(); i++) {
-        for (int j = 0; j < cities.size(); j++) {
+    for (size_t i = 0; i < cities.size(); i++) {
+        for (size_t j = 0; j < cities.size(); j++) {
             cout << roadMatrix[i][j] << " ";
         }
         cout << endl;
@@ -124,16 +124,16 @@ void displayAllData() {
     displayCities();
 
     cout << "\nRoad adjacency matrix:\n";
-    for (int i = 0; i < cities.size(); i++) {
-        for (int j = 0; j < cities.size(); j++) {
+    for (size_t i = 0; i < cities.size(); i++) {
+        for (size_t j = 0; j < cities.size(); j++) {
             cout << roadMatrix[i][j] << " ";
         }
         cout << endl;
     }
 
     cout << "\nBudget adjacency matrix:\n";
-    for (int i = 0; i < cities.size(); i++) {
-        for (int j = 0; j < cities.size(); j++) {
+    for (size_t i = 0; i < cities.size(); i++) {
+        for (size_t j = 0; j < cities.size(); j++) {
             cout << fixed << setprecision(2) << budgetMatrix[i][j] << " ";
         }
         cout << endl;
@@ -143,7 +143,7 @@ void displayAllData() {
 void saveToFile() {
     ofstream citiesFile("cities.txt");
     citiesFile << "Index  City_Name\n";
-    for (int i = 0; i < cities.size(); i++) {
+    for (size_t i = 0; i < cities.size(); i++) {
         citiesFile << (i + 1) << "   " << cities[i] << "\n";
     }
     citiesFile.close();
@@ -151,8 +151,8 @@ void saveToFile() {
     ofstream roadsFile("roads.txt");
     roadsFile << "Nbr Road            Budget\n";
     int count = 1;
-    for (int i = 0; i < cities.size(); i++) {
-        for (int j = i + 1; j < cities.size(); j++) {
+    for (size_t i = 0; i < cities.size(); i++) {
+        for (size_t j = i + 1; j < cities.size(); j++) {
             if (roadMatrix[i][j]) {
                 roadsFile << count << ".  "
                           << cities[i] << "-" << cities[j]

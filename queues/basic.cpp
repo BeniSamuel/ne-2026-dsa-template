@@ -15,11 +15,11 @@ void enqueue()
         if (front == -1)
         {
             front = 0;
-            cout << "Insert The element in queue: " << endl;
-            cin >> val;
-            rear++;
-            queue[rear] = val;
         }
+        cout << "Insert The element in queue: " << endl;
+        cin >> val;
+        rear++;
+        queue[rear] = val;
     }
 }
 
@@ -32,6 +32,11 @@ void dequeue()
     }
     cout << "Element deleted from queue is: " << endl;
     front++;
+    if (front > rear)
+    {
+        front = -1;
+        rear = -1;
+    }
 }
 
 void display()
@@ -45,9 +50,9 @@ void display()
         cout << "Queue elements are: ";
         for (int i = front; i <= rear; i++)
         {
-            cout << queue[i] << "";
-            cout << endl;
+            cout << queue[i] << " ";
         }
+        cout << endl;
     }
 }
 
@@ -98,7 +103,7 @@ int main()
             break;
         }
     }
-    (while ch == 5);
+    while (ch != 5);
 
     return 0;
 }

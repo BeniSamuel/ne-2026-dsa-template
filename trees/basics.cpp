@@ -54,13 +54,13 @@ void printTree(TreeNode<int> *root)
     }
 
     cout << root->data << ": ";
-    for (int i = 0; i < root->children.size(); i++)
+    for (size_t i = 0; i < root->children.size(); i++)
     {
         cout << root->children[i]->data << " ,";
     }
     cout << endl;
 
-    for (int i = 0; i < root->children.size(); i++)
+    for (size_t i = 0; i < root->children.size(); i++)
     {
         printTree(root->children[i]);
     }
@@ -78,12 +78,12 @@ void printTreeLevelWise(TreeNode<int> *root)
         counter++;
         q.pop();
         cout << f->data << ": ";
-        for (int i = 0; i < f->children.size(); i++)
+        for (size_t i = 0; i < f->children.size(); i++)
         {
             cout << f->children[i]->data << " ,";
         }
         cout << endl;
-        for (int i = 0; i < f->children.size(); i++)
+        for (size_t i = 0; i < f->children.size(); i++)
         {
             q.push(f->children[i]);
         }

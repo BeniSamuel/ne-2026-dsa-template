@@ -69,6 +69,10 @@ struct Queue
         temp->next = nullptr;
         delete temp;
         size--;
+        if (head == nullptr)
+        {
+            tail = nullptr;
+        }
     }
 
     int front()
@@ -83,16 +87,16 @@ struct Queue
     void display()
     {
         Node *temp = head;
-        while (temp == nullptr)
+        while (temp != nullptr)
         {
             cout << temp->val << " ";
             temp = temp->next;
         }
+        cout << endl;
     }
-}
+};
 
-int
-main()
+int main()
 {
 
     Queue q;
@@ -109,7 +113,7 @@ main()
     q.dequeue();
     q.dequeue();
 
-    cout << q.front()
+    cout << q.front() << endl;
 
-                return 0;
-};
+    return 0;
+}

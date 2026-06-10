@@ -100,7 +100,7 @@ Node *merge(Node *a, Node *b)
     else
     {
         c = b;
-        c->next = merge(a->next, b);
+        c->next = merge(a, b->next);
     }
     return c;
 }

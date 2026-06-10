@@ -73,6 +73,7 @@ public:
         if (isRight == true)
         {
             subTree->right = newNode;
+            return newNode;
         }
 
         else
@@ -101,10 +102,10 @@ int main()
     Node *root = bt.addNode(nullptr, 1, false);
     Node *left = bt.addNode(root, 2, false);
     Node *right = bt.addNode(root, 3, true);
-    Node *leftLeft = bt.addNode(left, 4, false);
-    Node *leftRight = bt.addNode(left, 5, true);
-    Node *rightLeft = bt.addNode(right, 6, false);
-    Node *rightRight = bt.addNode(right, 7, true);
+    bt.addNode(left, 4, false);
+    bt.addNode(left, 5, true);
+    bt.addNode(right, 6, false);
+    bt.addNode(right, 7, true);
     bt.display(root);
 
     return 0;
